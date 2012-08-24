@@ -55,6 +55,7 @@
                             </ul>
                         </li>
                         <li>Handy Shell Utilities</li>
+                        <li>A Short Story</li>
                         <!-- Maybe?
                         -->
                     </ul>
@@ -68,7 +69,7 @@
                     <img src="img/stratasan.png" style="background-color: transparent; box-shadow: none;"/>
                 </section>
 				<section>
-                    <h3>Circa 1995</h3>
+                    <h3>Circa 1993</h3>
                     <img src="img/dos5x.gif" border="0" />
 			    </section>
 				<section>
@@ -101,18 +102,14 @@
 
                 <section>
                     <h4>Don't reinvent the wheel.</h4>
-                </section>
-
-                <section>
-                    <h4>Built <i>for</i> developers <i>by</i> developers.</h4>
+					<blockquote>
+                        Those who don't understand Unix are condemned to reinvent it, poorly.
+                    </blockquote>
+                    <p><em>– Henry Spencer</em></p>
                 </section>
 
                 <section>
                     <h4>Concise. Expressive.</h4>
-                </section>
-
-                <section>
-                    <h4>Get things done.</h4>
                 </section>
 
                 <section>
@@ -132,7 +129,7 @@
 
                 <section>
                     <h3>Focus Scope</h3>
-                    <blockquote class="fragment">
+                    <blockquote>
                         Make each program do one thing well. To do a new job, build afresh
                         rather than complicate old programs by adding new features.
                     </blockquote>
@@ -140,14 +137,14 @@
 
                 <section>
                     <h3>Text As The Universal Interface</h3>
-                    <blockquote class="fragment">
+                    <blockquote>
                         Expect the output of every program to become the input to another.
                         Don't insist on interactive input.
                     </blockquote>
                 </section>
                 <section>
                     <h3>Iterate</h3>
-                    <blockquote class="fragment">
+                    <blockquote>
                         Design and build software, even operating systems, to be tried 
                         early. Throw away the clumsy parts and rebuild them.
                     </blockquote>
@@ -156,15 +153,10 @@
                     <h3>
                         Tools &gt; Unskilled Help
                     </h3>
-                    <blockquote class="fragment">
+                    <img src="img/general_problem.png" />
+                    <blockquote>
                         Even if you have to detour to build the tools and expect to throw some of them out after you've finished using them.
                     </blockquote>
-                </section>
-                <section>
-					<blockquote>
-                        Those who don't understand Unix are condemned to reinvent it, poorly.
-                    </blockquote>
-                    <p><em>– Henry Spencer</em></p>
                 </section>
 
                 <section>
@@ -287,6 +279,14 @@ vi !*   - Insert all arguments from previous command</pre></code>
                 <section><img src="img/pipeline.png" /></section>
 
                 <section>
+                    <h3>If pipes are the mortar...</h3>
+<pre>awk cat cut grep head join
+less sed sort split tail tr
+uniq wc xargs</pre>
+                    <h3 class="fragment">then these are the bricks.</h3>
+                </section>
+
+                <section>
                         Pipe curl output to a filter (grep).
                         <pre><code>curl -s http://nashville.coderfaire.com/talks/ | grep \"cftalktitle\"
 &lt;a name="cfn120KN"&gt;&lt;span class="cftalktitle"&gt;Develop With Purpose&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
@@ -311,13 +311,6 @@ vi !*   - Insert all arguments from previous command</pre></code>
 </code></pre>
                 </section>
 
-                <section>
-                    <h3>If pipes are the glue...</h3>
-<pre>awk cat cut grep head join
-less sed sort split tail tr
-uniq wc xargs</pre>
-                    <h3 class="fragment">then these are the bricks.</h3>
-                </section>
 
                 <section>
                     <p>Pipe curl output to a filter (grep), to more filters (sed and head).</p>
@@ -334,6 +327,36 @@ Automated understanding  in the Cloud
 Speaker: Steve Brownlee
 --
 GUIs Come and Go, CLI is Forever</code></pre>
+                </section>
+
+                <section>
+<prE><code>curl -s http://nashville.coderfaire.com/talks/ \
+| grep \"cftalktitle\" -A1 \
+    | sed 's/<[^>]*>//g' | tr "\n" "|" | sed 's/--/%/g' | tr "%" "\n"
+    Develop With Purpose|Speaker: Jon Shearer|
+    |ElasticSearch: Where NoSQL Meets Full-Text Search|Speaker: Andrew Raines|
+    |Automated understanding  in the Cloud|Speaker: Steve Brownlee|
+    |GUIs Come and Go, CLI is Forever|Speaker: Brian Dailey|
+    |Intro to Erlang|Speaker: Bryan Hunter|
+    |Tools for Surviving the Zombie Apocalypse:  Microcontrollers &#038; Gadgeteer|Speaker: Ian Lee|
+    |Grokking HTTP|Speaker: Ben Ramsey|
+    |LESS vs. SASS &#8211; CSS Precompiler Showdown|Speaker: Kevin Powell|
+    |Redis for fun and profit|Speaker: Matt George|
+    |Codetastic Part 1 of 2 &#8211; Simple is Hard|Speaker: Jim Siegienski|
+    |Codetastic Part 2 of 2 &#8211; Testing needs Seams|Speaker: Eli Tapolcsanyi|
+    |Data Networking for Developers|Speaker: Jason Myers|
+    |Concurrent Updates Without Locks|Speaker: Robert T. Bauer|
+    |Going Deeper with jQuery Mobile|Speaker: Andy Matthews|
+    |Getting Results with Scrum &#038; Kanban|Speaker: Brendan Wovchko &#038; Chris Hefley|
+    |Adventures in Building Our Dream Interface|Speaker: Tim Moses|
+    |Writing Code That is Easy to Change|Speaker: Jesse Bunch|
+    |Titanium Mobile Development|Speaker: Andrew McElroy|
+    |Mobile JavaScript Frameworks 2012|Speaker: Lauren OMeara|
+</code></pre>
+                </section>
+
+                <section>
+                    <p>Top commiters on a project by number of commits.</p>
                 </section>
 
                 <section>
@@ -444,10 +467,18 @@ cut -d\| -f33
                 </section>
                 <section>
                 <p>Create a sample dataset, 1/10th of the file.</p>
-<pre><code>awk 'BEGIN { srand() } rand() &gt;= .01' piped.txt | \
+<pre><code>awk 'BEGIN { srand() } rand() &gt;= .1' piped.txt | \
 tee sample.txt | \
 wc -l
 371355</pre></code>
+                </section>
+
+                <section>
+                <p>Create a sample dataset, 1/10th of the file, <i>call me when it's done</i>.</p>
+<pre><code>echo $(awk 'BEGIN { srand() } rand() &gt;= .1' piped.txt | \
+tee sample.txt | \
+wc -l) | ./twilio-sms 917-555-1234
+</pre></code>
                 </section>
 
                 <section>
