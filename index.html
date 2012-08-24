@@ -66,7 +66,7 @@
                     <h2>About Me</h2>
                     <p>@brian_dailey</p>
                     <p>github.com/briandailey</p>
-                    <img src="img/stratasan.png" style="background-color: transparent; box-shadow: none;"/>
+                    <img src="img/stratasan.png" alt="logo" style="background-color: transparent; box-shadow: none;"/>
                 </section>
 				<section>
                     <h3>Circa 1993</h3>
@@ -261,7 +261,7 @@ cherry       ci             clean    co     config   credential-store
 !my     - Runs last cmd starting with ”my”, e.g., ”mysql -uroot -p db”
 !my:p   - Find last cmd starting with ”my” and print it (don't execute)
 vi !$   - Replaces !$ with last argument in previous command
-vi !*   - Insert all arguments from previous command</pre></code>
+vi !*   - Insert all arguments from previous command</code></pre>
                     <p>
                         A very useful (and more comprehensive) list is available here:
                         <br/>
@@ -408,7 +408,7 @@ GUIs Come and Go, CLI is Forever</code></pre>
                     <!-- TODO: OVerview of File. -->
                     <h3>Test File: Provider Database</h3>
                     <pre><code>~ wc -l npidata_20050523-20120709.csv 
-3717914 npidata_20050523-20120709.csv</pre></code>
+3717914 npidata_20050523-20120709.csv</code></pre>
                     <p>~412M</p>
                 </section>
 
@@ -463,14 +463,14 @@ cut -d\| -f33
                     <pre><code>~ pv piped.txt | cut -d\| -f33 | grep \"37206 | wc -l
  543MB 0:01:27 [6.77MB/s] [======&gt;       ] 12% ETA 0:10:04
 145
-</pre></code>
+</code></pre>
                 </section>
                 <section>
                 <p>Create a sample dataset, 1/10th of the file.</p>
 <pre><code>awk 'BEGIN { srand() } rand() &gt;= .1' piped.txt | \
 tee sample.txt | \
 wc -l
-371355</pre></code>
+371355</code></pre>
                 </section>
 
                 <section>
@@ -478,7 +478,7 @@ wc -l
 <pre><code>echo $(awk 'BEGIN { srand() } rand() &gt;= .1' piped.txt | \
 tee sample.txt | \
 wc -l) | ./twilio-sms 917-555-1234
-</pre></code>
+</code></pre>
                 </section>
 
                 <section>
@@ -549,6 +549,7 @@ sed ${1}q
 				<section>
 					<h1>THE END</h1>
                     <h2>Questions?</h2>
+                    <p><a href="http://briandailey.github.com/coderfaire2012">http://briandailey.github.com/coderfaire2012</a></p>
                 </section>
                 <section>
                     <h1>Thanks!</h1>
