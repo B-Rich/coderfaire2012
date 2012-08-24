@@ -163,10 +163,19 @@
                     <h3>Ok, how do I get it?</h3>
                     <ul>
                         <li>Linux Live-Boot</li>
-                        <li>Mac OS X / Home Brew</li>
-                        <li>Install Cygwin (Inferior!)</li>
+                        <li>Mac OS X with Homebrew</li>
+                        <li>Install Cygwin</li>
+                        <li>VMWare / VirtualBox</li>
                         <li>SSH to Server</li>
                     </ul>
+                </section>
+
+                <section>
+                    <h1>bash</h1>
+                    <h3>dash</h3>
+                    <h3>zsh</h3>
+                    <h3>fish</h3>
+                    <p>There are many flavors.</p>
                 </section>
 
                 <section>
@@ -279,6 +288,37 @@ vi !*   - Insert all arguments from previous command</code></pre>
                 <section><img src="img/pipeline.png" /></section>
 
                 <section>
+                    <p>The humble pipe...</p>
+                    <h1>|</h1>
+                    <p>...allows you to use programs as filters.</p>
+                </section>
+
+                <section>
+                    <h1>&gt;</h1>
+                    <p>Redirect output to a file (overwrite).</p>
+                </section>
+
+                <section>
+                    <h1>&gt;&gt;</h1>
+                    <p>Append output to a file.</p>
+                </section>
+
+                <section>
+                    <h1>&lt;</h1>
+                    <p>Read file into input.</p>
+                </section>
+
+                <section>
+                    <h1>tee</h1>
+                    <p>Redirect to a file <i>and</i> pass to standard out.</p>
+                </section>
+
+                <section>
+                    <h2>&amp;&gt;</h2>
+                    <p>Redirect both stderr and stdout to a file.</p>
+                </section>
+
+                <section>
                     <h3>If pipes are the mortar...</h3>
 <pre>awk cat cut grep head join
 less sed sort split tail tr
@@ -356,7 +396,7 @@ GUIs Come and Go, CLI is Forever</code></pre>
                 </section>
 
                 <section>
-                    <p>Top commiters on a project by number of commits.</p>
+                    <p>Top committers on a project by number of commits.</p>
                 </section>
 
                 <section>
@@ -396,15 +436,6 @@ GUIs Come and Go, CLI is Forever</code></pre>
                 </section>
 
                 <section>
-                    <h3>Utilities To Know</h3>
-                </section>
-
-                <section>
-                    <h1>awk</h1>
-                    <h2>pv</h2>
-                </section>
-
-                <section>
                     <!-- TODO: OVerview of File. -->
                     <h3>Test File: Provider Database</h3>
                     <pre><code>~ wc -l npidata_20050523-20120709.csv 
@@ -429,7 +460,7 @@ GUIs Come and Go, CLI is Forever</code></pre>
                 </section>
 
                 <section>
-                    <p>Replace commas with pipes...<p>
+                    <p>Replace commas with pipes...</p>
                     <pre><code>~ pv npidata_20050523-20120709.csv | sed 's/",/"|/g' &gt; piped.txt
  543MB 0:01:27 [6.77MB/s] [======&gt;       ] 12% ETA 0:10:04
 </code></pre>
@@ -474,11 +505,56 @@ wc -l
                 </section>
 
                 <section>
-                <p>Create a sample dataset, 1/10th of the file, <i>call me when it's done</i>.</p>
+                <p>Create a sample dataset, 1/10th of the file, <i>text me when it's done</i>.</p>
 <pre><code>echo $(awk 'BEGIN { srand() } rand() &gt;= .1' piped.txt | \
 tee sample.txt | \
 wc -l) | ./twilio-sms 917-555-1234
 </code></pre>
+                </section>
+
+                <section>
+                    <h3>Shell Aliases</h3>
+                    <p>DRY!</p>
+                    <pre><code># List files in friendly format
+alias l='ls -lh'
+# Do not allow updates or deletes without WHERE clause.
+alias mysql='mysql --i-am-a-dummy'</code></pre>
+                    <p>Save to ~/.bashrc (on Ubuntu) to autoload.</p>
+                </section>
+
+                <section>
+                    <h3>Alias Limitation</h3>
+<pre><code># Usage: fun [name]
+alias fun='echo $1 is having fun!'
+
+$ fun Brian
+is having fun! Brian</code></pre>
+<p>
+Alias is only useful as the beginning of a command.
+<br/>
+Arguments don't work well, can't do loops, etc.
+<br/>
+Answer? Functions and/or shell scripts!</p>
+                </section>
+
+                <section>
+<pre><code>phpargs() {
+    # $1 is the first argument passed
+    # get php page from manual mirror
+    curl -s http://us3.php.net/$1 | \
+        # pull all text in target div
+        sed -n '/&lt;div class="methodsynopsis dc-description"&gt;/,/&lt;\/div&gt;/p' | \
+        # strip out HTML tags
+        sed 's/<[^&gt;]*>//g' | \
+        # strip out line feed
+        tr -d "\n"
+    # add ending line
+    echo
+}</code></pre>
+                </section>
+                <section>
+<pre><code>$ phpargs in_array
+bool in_array ( mixed $needle, array $haystack [, bool $strict  ] )</code></pre>
                 </section>
 
                 <section>
