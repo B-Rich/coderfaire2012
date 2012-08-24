@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+        <!-- Seriously? "Unforgettable event?" Less marking, more nerdery! -->
+
+		<title>CoderFaire 2012</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/theme/default.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<script>
+			// If the query includes 'print-pdf' we'll use the PDF print sheet
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+
+		<div class="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>CoderFaire</h1>
+					<h3>August 25, 2012</h3>
+                    <h4>GUIs Come and Go, CLI is Forever</h4>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+                    <ul>
+                        <li>Unix Philosophy</li>
+                        <li>Bash Basics
+                            <ul>
+                                <li>Keyboard Navigation</li>
+                                <li>Bang Commands</li>
+                                <li>Pipes</li>
+                            </ul>
+                        </li>
+                        <li>Handy Shell Utilities</li>
+                        <!-- Maybe?
+                        -->
+                    </ul>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+                <section>
+                    <h2>About Me</h2>
+                    <p>@brian_dailey</p>
+                    <p>github.com/briandailey</p>
+                    <img src="img/stratasan.png" style="background-color: transparent; box-shadow: none;"/>
+                </section>
+				<section>
+                    <h3>Circa 1995</h3>
+                    <img src="img/dos5x.gif" border="0" />
+			    </section>
+				<section>
+                    <h3>Circa 2001-2006</h3>
+                    <img src="img/rh.jpg" border="0" />
+			    </section>
+				<section>
+                    <h3>2006-2011</h3>
+                    <img src="img/ubuntu.png" border="0" />
+			    </section>
+				<section data-state="blackout">
+                    <h3>2011-Present</h3>
+                    <img src="img/apple.jpg" border="0" />
+			    </section>
+
+				<section>
+					<h2>Why learn to use the shell?</h2>
+				</section>
+
+                <section>
+                    <h4>You're probably already using it.</h4>
+                    <aside>
+                        For application deployment, server setup, etc.
+                    </aside>
+                </section>
+
+                <section>
+                    <h4>It works nearly everywhere.</h4>
+                </section>
+
+                <section>
+                    <h4>Don't reinvent the wheel.</h4>
+                </section>
+
+                <section>
+                    <h4>Built <i>for</i> developers <i>by</i> developers.</h4>
+                </section>
+
+                <section>
+                    <h4>Concise. Expressive.</h4>
+                </section>
+
+                <section>
+                    <h4>Get things done.</h4>
+                </section>
+
+                <section>
+                    <h3>Disadvantages?</h3>
+                </section>
+
+                <section>
+                <h4>A slight learning curve.<br/>
+                    There is one.</h4>
+                    <img src="img/disadvantage.jpg" />
+                </section>
+
+                <section>
+                    <h2>Unix Philosophy 101</h2>
+                    <h4>Douglas McIlroy</h4>
+                </section>
+
+                <section>
+                    <h3>Focus Scope</h3>
+                    <blockquote class="fragment">
+                        Make each program do one thing well. To do a new job, build afresh
+                        rather than complicate old programs by adding new features.
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Text As The Universal Interface</h3>
+                    <blockquote class="fragment">
+                        Expect the output of every program to become the input to another.
+                        Don't insist on interactive input.
+                    </blockquote>
+                </section>
+                <section>
+                    <h3>Iterate</h3>
+                    <blockquote class="fragment">
+                        Design and build software, even operating systems, to be tried 
+                        early. Throw away the clumsy parts and rebuild them.
+                    </blockquote>
+                </section>
+                <section>
+                    <h3>
+                        Tools &gt; Unskilled Help
+                    </h3>
+                    <blockquote class="fragment">
+                        Even if you have to detour to build the tools and expect to throw some of them out after you've finished using them.
+                    </blockquote>
+                </section>
+                <section>
+					<blockquote>
+                        Those who don't understand Unix are condemned to reinvent it, poorly.
+                    </blockquote>
+                    <p><em>– Henry Spencer</em></p>
+                </section>
+
+                <section>
+                    <h3>Ok, how do I get it?</h3>
+                    <ul>
+                        <li>Linux Live-Boot</li>
+                        <li>Mac OS X / Home Brew</li>
+                        <li>Install Cygwin (Inferior!)</li>
+                        <li>SSH to Server</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Bash Basics</h3>
+                    <h4>Keyboard Basics</h4>
+                </section>
+
+                <section>
+                    <h3>Example Time</h3>
+                    <h4>Getting Around</h4>
+<pre><code>
+psql (9.1.3)
+mydb=# select sum(population_count) from reports_demographic 
+d oin reports_geographicunit g on d .geographic_unit_id = g.id 
+where d.year = 2015 and g.geographic_type = 'zipcode';
+</code></pre>
+                    <p class="fragment">ZOMG! I misspelled "join!"</p>
+                </section>
+
+                <section>
+<pre><code>
+psql (9.1.3)
+mydb=# select sum(population_count) from reports_demographic
+d oin reports_geographicunit g on d .geographic_unit_id = g.id
+where d.year = 2015 and g.geographic_type = 'zipcode';
+</code></pre>
+                    <p class="fragment"><strong>Wrong</strong>: Hold down arrow key <br/>until you pass out from exhaustion.</p>
+                    <p class="fragment"><strong>Right</strong>: Alt+B to move the cursor back a few words.</p>
+                </section>
+
+                <section>
+                    <h3>Keyboard Navigation</h3>
+<pre>
+↑↓          - Scroll through previous commands
+Ctrl+U      - Clear all before cursor
+Ctrl+K      - Clear all after cursor
+Ctrl+A      - Home
+Ctrl+E      - End
+Alt+B       - Move cursor back one ”word” (Similar to Ctrl+←)
+Alt+F       - Move cursor forward one ”word” (Ctrl+→)
+Alt+Bckspc  - Delete previous ”word” (Also, Ctrl+W)
+Alt+.       - Recall last command argument
+Tab         - Autocomplete commands, files, folders, and more.
+Ctrl+_      - Undo
+CTRL+R      - Reverse history search
+Esc, T      - Swap last two words
+Ctrl+L      - Clear the screen
+</pre>
+<p>Only the tip of the iceberg, really.</p>
+<p><a href="http://bit.ly/editing-mode-cheatsheet">http://bit.ly/editing-mode-cheatsheet</a></p>
+                </section>
+
+                <section>
+                    <h3>But There's More!</h3>
+                    <h2>The GNU Readline Library</h2>
+                    <h4>Near-Universal adoption.</h4>
+                    <p><a href="http://en.wikipedia.org/wiki/GNU_readline">http://en.wikipedia.org/wiki/GNU_readline</a></p>
+                </section>
+
+                <section data-state="soothe">
+                    <h3>Once you learn it...</h3>
+                    <img class="fragment" src="img/matrix.gif" />
+                </section>
+
+                <section>
+                    <h3>Tab Completion</h3>
+<pre><code>
+# One tab will auto complete if one match is found.
+$ vi ind[Tab]
+$ vi index.html
+
+# Double tab will show available matches.
+$ l p[Tab][Tab]
+package.json  plugin/
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>It's not just file names...</h3>
+                    <p>bash-completion (Mac OS X, Ubuntu)<br/> makes it context-aware.</p>
+<pre class="fragment"><code>
+$ git c[Tab][Tab]
+checkout     cherry-pick    citool   clone  commit   credential-cache
+cherry       ci             clean    co     config   credential-store
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>More Shell Basics</h3>
+                    <h4>Argument Shortcuts</h4>
+<pre><code>!!          - Run the last command (same as ↑+return)
+!my     - Runs last cmd starting with ”my”, e.g., ”mysql -uroot -p db”
+!my:p   - Find last cmd starting with ”my” and print it (don't execute)
+vi !$   - Replaces !$ with last argument in previous command
+vi !*   - Insert all arguments from previous command</pre></code>
+                    <p>
+                        A very useful (and more comprehensive) list is available here:
+                        <br/>
+                        <a href="http://mail.linux.ie/pipermail/ilug/2006-May/087799.html">http://mail.linux.ie/pipermail/ilug/2006-May/087799.html</a>
+                    </p>
+                </section>
+
+                <section>
+                    <img src="img/pipes.jpg"/>
+                    <br/>
+                    <br/>
+                    <h2>Pipes!</h2>
+                </section>
+
+                <section><img src="img/pipeline.png" /></section>
+
+                <section>
+                        Pipe curl output to a filter (grep).
+                        <pre><code>curl -s http://nashville.coderfaire.com/talks/ | grep \"cftalktitle\"
+&lt;a name="cfn120KN"&gt;&lt;span class="cftalktitle"&gt;Develop With Purpose&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12001"&gt;&lt;span class="cftalktitle"&gt;ElasticSearch: Where NoSQL Meets Full-Text Search&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12002"&gt;&lt;span class="cftalktitle"&gt;Automated understanding  in the Cloud&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12003"&gt;&lt;span class="cftalktitle"&gt;GUIs Come and Go, CLI is Forever&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12004"&gt;&lt;span class="cftalktitle"&gt;Intro to Erlang&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12005"&gt;&lt;span class="cftalktitle"&gt;Tools for Surviving the Zombie Apocalypse:  Microcontrollers &#038; Gadgeteer&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12006"&gt;&lt;span class="cftalktitle"&gt;Grokking HTTP&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12007"&gt;&lt;span class="cftalktitle"&gt;LESS vs. SASS &#8211; CSS Precompiler Showdown&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12008"&gt;&lt;span class="cftalktitle"&gt;Redis for fun and profit&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12009"&gt;&lt;span class="cftalktitle"&gt;Codetastic Part 1 of 2 &#8211; Simple is Hard&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12010"&gt;&lt;span class="cftalktitle"&gt;Codetastic Part 2 of 2 &#8211; Testing needs Seams&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12011"&gt;&lt;span class="cftalktitle"&gt;Data Networking for Developers&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12012"&gt;&lt;span class="cftalktitle"&gt;Concurrent Updates Without Locks&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12013"&gt;&lt;span class="cftalktitle"&gt;Going Deeper with jQuery Mobile&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12014"&gt;&lt;span class="cftalktitle"&gt;Getting Results with Scrum &#038; Kanban&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12015"&gt;&lt;span class="cftalktitle"&gt;Adventures in Building Our Dream Interface&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12017"&gt;&lt;span class="cftalktitle"&gt;Writing Code That is Easy to Change&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12018"&gt;&lt;span class="cftalktitle"&gt;Titanium Mobile Development&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;a name="cfn12019"&gt;&lt;span class="cftalktitle"&gt;Mobile JavaScript Frameworks 2012&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>If pipes are the glue...</h3>
+<pre>awk cat cut grep head join
+less sed sort split tail tr
+uniq wc xargs</pre>
+                    <h3 class="fragment">then these are the bricks.</h3>
+                </section>
+
+                <section>
+                    <p>Pipe curl output to a filter (grep), to more filters (sed and head).</p>
+<pre><code> ~ curl -s http://nashville.coderfaire.com/talks/ \
+    | grep \"cftalktitle\" -A1 \
+    | sed 's/<[^>]*>//g' | head 
+Develop With Purpose
+Speaker: Jon Shearer
+--
+ElasticSearch: Where NoSQL Meets Full-Text Search
+Speaker: Andrew Raines
+--
+Automated understanding  in the Cloud
+Speaker: Steve Brownlee
+--
+GUIs Come and Go, CLI is Forever</code></pre>
+                </section>
+
+                <section>
+<pre><code> django (master) git shortlog -s
+  2779  Adrian Holovaty
+   298  Alex Gaynor
+     1  Alex Ogier
+     2  Alexey Boriskin
+     9  Aljosa Mohorovic
+     3  Andrei Antoukh
+    26  Andrew Godwin
+     1  Andrews Medina
+     1  Andy Dirnberger
+     1  Angeline Tan
+[...snip...]
+</code></pre>
+                </section>
+
+                <section>
+<pre><code> django (master) git shortlog -s | sort -rn</code></pre>
+<p>Scrolls by too fast!</p>
+                </section>
+
+                <section>
+<pre><code> django (master) git shortlog -s | sort -rn | head
+  2779  Adrian Holovaty
+  1869  Malcolm Tredinnick
+  1667  Russell Keith-Magee
+   867  Jannis Leidel
+   858  Jacob Kaplan-Moss
+   458  Luke Plant
+   412  Aymeric Augustin
+   335  Gary Wilson Jr
+   298  Alex Gaynor
+   296  Ramiro Morales
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>Utilities To Know</h3>
+                </section>
+
+                <section>
+                    <h1>awk</h1>
+                    <h2>pv</h2>
+                </section>
+
+                <section>
+                    <!-- TODO: OVerview of File. -->
+                    <h3>Test File: Provider Database</h3>
+                    <pre><code>~ wc -l npidata_20050523-20120709.csv 
+3717914 npidata_20050523-20120709.csv</pre></code>
+                    <p>~412M</p>
+                </section>
+
+                <section>
+                    <p>Get file header positions...</p>
+                    <pre><code>~ head -1 npidata_20050523-20120709.csv | tr , "\n" | less -N
+      1 "NPI"
+      2 "Entity Type Code"
+      3 "Replacement NPI"
+      4 "Employer Identification Number (EIN)"
+      5 "Provider Organization Name (Legal Business Name)"
+      6 "Provider Last Name (Legal Name)"
+      7 "Provider First Name"
+      8 "Provider Middle Name"
+      9 "Provider Name Prefix Text"
+[...snip...]
+</code></pre>
+                </section>
+
+                <section>
+                    <p>Replace commas with pipes...<p>
+                    <pre><code>~ pv npidata_20050523-20120709.csv | sed 's/",/"|/g' &gt; piped.txt
+ 543MB 0:01:27 [6.77MB/s] [======&gt;       ] 12% ETA 0:10:04
+</code></pre>
+                    <p>Proof it worked...</p>
+                    <pre><code>awk 'BEGIN { FS="|" } { print NF }' piped.txt | uniq</code></pre>
+329
+                </section>
+
+                <section>
+                    <p>Replace zipcodes with five-character limit.</p>
+                    <pre><code>~ head -10 piped.txt | \
+awk -v Q='"' '
+    BEGIN { FS="|"; OFS="|" } 
+    { $33 = substr($33, 0, 6) Q; print $0 }
+' | \
+cut -d\| -f33
+"Provi"
+"68847"
+"32204"
+"28304"
+"75751"
+"77090"
+"94559"
+"43615"
+"10010"
+"79329"</code></pre>
+                </section>
+
+                <section>
+                    <p>How many doctors are practicing in east Nashville (37206)?</p>
+                    <pre><code>~ pv piped.txt | cut -d\| -f33 | grep \"37206 | wc -l
+ 543MB 0:01:27 [6.77MB/s] [======&gt;       ] 12% ETA 0:10:04
+145
+</pre></code>
+                </section>
+                <section>
+                <p>Create a sample dataset, 1/10th of the file.</p>
+<pre><code>awk 'BEGIN { srand() } rand() &gt;= .01' piped.txt | \
+tee sample.txt | \
+wc -l
+371355</pre></code>
+                </section>
+
+                <section>
+                    <h2>Once upon a time...</h2>
+                </section>
+
+                <section>
+                    <h2>Donald Knuth</h2>
+                    <p>Literate programming, Pascal, WEB</p>
+                    <h3>vs</h3>
+                    <h2>Douglas McIlroy</h2>
+                    <p>Inventor of pipes, wielder of Unix Philosophy</p>
+                </section>
+
+                <section data-state="blackout">
+                <table style="width: 300px; margin: 0px auto;">
+                    <tr>
+                        <td>
+                            <center>
+                            <img src="img/knuth.jpg" style="vertical-align: middle;">
+                            <br/>
+                            <img src="img/knuth-txt.gif" />
+                        </center>
+                        </td>
+                        <td>
+                            &nbsp;<blink>vs.</blink>&nbsp;
+                        </td>
+                        <td>
+                            <center>
+                            <img src="img/mcilroy.jpg" style="vertical-align: middle;">
+                            <br/>
+                            <img src="img/mcilroy-txt.gif" />
+                        </center>
+                        </td>
+                   </table>
+                </section>
+
+                <section>
+                    <h2>Mission</h2>
+                    <p>Read a file of text, determine the <em>n</em> most frequently used words, and print out a sorted list of those words along with their frequencies.</p>
+                </section>
+
+                <section>
+                    <h2>Knuth</h2>
+                    <p>Beautiful, literate code.</p>
+                    <p>10+ pages of WEB</p>
+                </section>
+                <section>
+                    <h2>McIlroy</h2>
+                    <p>Sure, that's nice, but...</p>
+                    <pre><code>
+tr -cs A-Za-z '\n' |
+tr A-Z a-z |
+sort |
+uniq -c |
+sort -rn |
+sed ${1}q
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>McIlroy</h2>
+                    <blockquote>
+                        The simple pipeline given above will suffice to get answers right now, not next week or next month. It could well be enough to finish the job. 
+                    </blockquote>
+                    <p>- <em><a href="http://upload.wikimedia.org/wikipedia/commons/f/f6/Pipeline.svg">Source</a></em></p>
+                </section>
+
+				<section>
+					<h1>THE END</h1>
+                    <h2>Questions?</h2>
+                </section>
+                <section>
+                    <h1>Thanks!</h1>
+                    <p>@brian_dailey</p>
+				</section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Presentation progress bar -->
+			<div class="progress"><span>&nbsp;</span></div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+					{ src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
